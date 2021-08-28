@@ -1,0 +1,11 @@
+# Папки
+/.idea/
+/.vscode/
+/node_modules/
+/dist/
+/.cache/
+
+# Файлы
+/.DS_Store
+/yarn.lock
+/yarn-error.log
