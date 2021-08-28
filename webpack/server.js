@@ -5,7 +5,6 @@ const {
 	localIdentName,
 	extensions,
 	isDev,
-	createPath,
 	createOptionsDefine,
 } = require("./common");
 const path = require("path");
@@ -122,6 +121,7 @@ const config = {
 				{
 					from: path.resolve("public"),
 					to: path.resolve("dist", "public"),
+					noErrorOnMissing: true,
 				},
 			],
 		}),

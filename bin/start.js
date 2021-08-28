@@ -37,10 +37,10 @@ const script = async () => {
 			return;
 		}
 
-		// // Создаем watcher для сервера
-		// watching = serverCompiler.watch({ stats: "errors-only" }, (stats) => {
-		// 	console.error(stats);
-		// });
+		// Создаем watcher для сервера
+		watching = serverCompiler.watch({}, (stats) => {
+			console.error(stats);
+		});
 	});
 
 	// Запускаем сервер разработки
