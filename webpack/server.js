@@ -6,31 +6,31 @@ const {
 	extensions,
 	isDev,
 	createOptionsDefine,
-} = require("./common");
-const path = require("path");
+} = require('./common');
+const path = require('path');
 
 // Plugins
-const { DefinePlugin } = require("webpack");
-const WebpackBar = require("webpackbar");
-const nodeExternals = require("webpack-node-externals");
-const NodemonPlugin = require("nodemon-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+const { DefinePlugin } = require('webpack');
+const WebpackBar = require('webpackbar');
+const nodeExternals = require('webpack-node-externals');
+const NodemonPlugin = require('nodemon-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const config = {
 	mode: env,
-	name: "server",
-	target: "node",
+	name: 'server',
+	target: 'node',
 	devtool,
 	node: {
 		__dirname: false,
 		__filename: false,
 	},
-	entry: path.resolve("src", "server"),
+	entry: path.resolve('src', 'server'),
 	output: {
-		path: path.resolve("dist"),
-		filename: "server.js",
-		library: "commonjs2",
-		publicPath: isDev ? process.env.PUBLIC_PATH : "",
+		path: path.resolve('dist'),
+		filename: 'server.js',
+		library: 'commonjs2',
+		publicPath: isDev ? process.env.PUBLIC_PATH : '',
 	},
 	externals: nodeExternals({
 		allowlist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
@@ -45,16 +45,18 @@ const config = {
 				test: /\.(js|jsx|ts|tsx)$/,
 				exclude: /(node_modules|bower_components)/,
 				use: {
-					loader: "babel-loader",
+					loader: 'babel-loader',
 					options: {
 						presets: [
-							"@babel/preset-env",
-							"@babel/preset-react",
-							"@babel/preset-typescript",
+							'@babel/preset-env',
+							'@babel/preset-react',
+							'@babel/preset-typescript',
 						],
 						plugins: [
-							"@babel/plugin-transform-runtime",
-							"@loadable/babel-plugin",
+							'@babel/plugin-transform-runtime',
+							'@loadable/babel-plugin',
+							'dynamic-import-node',
+							'remove-webpack',
 						],
 					},
 				},
@@ -65,15 +67,15 @@ const config = {
 					{
 						resourceQuery: /inline/,
 						use: {
-							loader: "file-loader",
+							loader: 'file-loader',
 							options: {
-								name: isDev ? "[name].[ext]" : "[contenthash:8].[ext]",
-								outputPath: "assets/images/",
+								name: isDev ? '[name].[ext]' : '[contenthash:8].[ext]',
+								outputPath: 'assets/images/',
 								emitFile: false,
 							},
 						},
 					},
-					{ use: "svg-sprite-loader" },
+					{ use: 'svg-sprite-loader' },
 				],
 			},
 
@@ -82,7 +84,7 @@ const config = {
 				test: /\.css$/,
 				use: [
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 						options: {
 							modules: {
 								auto: true,
@@ -96,31 +98,31 @@ const config = {
 			{
 				test: /\.(jpeg|jpg|png|gif|mp4|webp)$/,
 				use: {
-					loader: "file-loader",
+					loader: 'file-loader',
 					options: {
-						name: isDev ? "[name].[ext]" : "[contenthash:8].[ext]",
-						outputPath: "assets/images/",
+						name: isDev ? '[name].[ext]' : '[contenthash:8].[ext]',
+						outputPath: 'assets/images/',
 						emitFile: false,
 					},
 				},
 			},
 			{
 				test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-				loader: "null-loader",
+				loader: 'null-loader',
 			},
 		],
 	},
 	plugins: [
 		new WebpackBar({
-			name: "Server",
-			color: "#8EE341",
+			name: 'Server',
+			color: '#8EE341',
 		}),
-		new DefinePlugin(createOptionsDefine("server")),
+		new DefinePlugin(createOptionsDefine('server')),
 		new CopyPlugin({
 			patterns: [
 				{
-					from: path.resolve("public"),
-					to: path.resolve("dist", "public"),
+					from: path.resolve('public'),
+					to: path.resolve('dist', 'public'),
 					noErrorOnMissing: true,
 				},
 			],
@@ -129,7 +131,7 @@ const config = {
 };
 
 if (isDev) {
-	config.plugins.push(new NodemonPlugin({ nodeArgs: ["--inspect"] }));
+	config.plugins.push(new NodemonPlugin({ nodeArgs: ['--inspect'] }));
 }
 
 module.exports = config;
