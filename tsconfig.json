@@ -1,17 +1,26 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "lib": ["es2015", "es2016", "es2017", "dom"],
-    "outDir": "./dist/",
-    "strict": true,
-    "sourceMap": true,
-    "module": "es2015",
-    "moduleResolution": "node",
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "."
-  },
-  "include": [
-    "./src/**/*"
-  ]
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "commonjs",
+		"lib": ["ESNEXT", "DOM"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx"
+	},
+	"exclude": [
+		"node_modules",
+		"build",
+		"scripts",
+		"acceptance-tests",
+		"webpack",
+		"jest"
+	]
 }

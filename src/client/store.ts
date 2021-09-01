@@ -1,12 +1,22 @@
-import { createStore, applyMiddleware } from 'redux';
+import * as Redux from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-const CS = (preloadedState: any = {}) => {
-	return createStore(reducers, preloadedState, applyMiddleware(thunk));
-};
+let compose = Redux.compose;
 
-const initiateStore = CS();
+// Для режима разработки на клиенте
+if (IS_DEV && IS_CLIENT === 'true') {
+	compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? Redux.compose;
+}
 
-export type Store = ReturnType<typeof initiateStore.getState>;
-export default CS;
+const createStore = (initialState: any = {}) =>
+	Redux.createStore(
+		reducers,
+		initialState,
+		compose(Redux.applyMiddleware(thunk)),
+	);
+
+const rootStore = createStore();
+
+export type Store = ReturnType<typeof rootStore.getState>;
+export default createStore;

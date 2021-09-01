@@ -45,6 +45,7 @@ app.get('/*', async (req: Request, res: Response) => {
 
 		// Достаем нужные данные для SEO и SVG
 		const helmet = Helmet.renderStatic();
+		// @ts-ignore
 		const sprite = await import('svg-sprite-loader/runtime/sprite.build');
 
 		const stream = ReactDOMServer.renderToNodeStream(
