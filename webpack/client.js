@@ -7,33 +7,33 @@ const {
 	isDev,
 	isProd,
 	createOptionsDefine,
-} = require("./common");
-const path = require("path");
+} = require('./common');
+const path = require('path');
 
 // Plugins
-const WebpackBar = require("webpackbar");
-const LoadablePlugin = require("@loadable/webpack-plugin");
-const { HotModuleReplacementPlugin, DefinePlugin } = require("webpack");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const WebpackBar = require('webpackbar');
+const LoadablePlugin = require('@loadable/webpack-plugin');
+const { DefinePlugin } = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = {
 	mode: env,
-	name: "client",
-	stats: "errors-only",
-	target: "web",
+	name: 'client',
+	stats: 'errors-only',
+	target: 'web',
 	devtool,
-	entry: { bundle: path.resolve("src", "client") },
+	entry: { bundle: path.resolve('src', 'client') },
 	output: {
 		filename: isDev
-			? "assets/js/[name].js"
-			: "assets/js/[name].[contenthash:8].js",
+			? 'assets/js/[name].js'
+			: 'assets/js/[name].[contenthash:8].js',
 		chunkFilename: isDev
-			? "assets/js/[name].chunk.js"
-			: "assets/js/[name].[contenthash:8].chunk.js",
-		path: path.resolve("dist", "public"),
-		publicPath: isDev ? process.env.PUBLIC_PATH : "/",
+			? 'assets/js/[name].chunk.js'
+			: 'assets/js/[name].[contenthash:8].chunk.js',
+		path: path.resolve('dist', 'public'),
+		publicPath: isDev ? process.env.PUBLIC_PATH : '/',
 	},
 	resolve: {
 		alias,
@@ -45,16 +45,16 @@ const config = {
 				test: /\.(js|jsx|ts|tsx)$/,
 				exclude: /(node_modules|bower_components)/,
 				use: {
-					loader: "babel-loader",
+					loader: 'babel-loader',
 					options: {
 						presets: [
-							"@babel/preset-env",
-							"@babel/preset-react",
-							"@babel/preset-typescript",
+							['@babel/preset-env', { useBuiltIns: 'usage', corejs: 3 }],
+							'@babel/preset-react',
+							'@babel/preset-typescript',
 						],
 						plugins: [
-							"@babel/plugin-transform-runtime",
-							"@loadable/babel-plugin",
+							'@babel/plugin-transform-runtime',
+							'@loadable/babel-plugin',
 						].filter(Boolean),
 					},
 				},
@@ -65,15 +65,15 @@ const config = {
 					{
 						resourceQuery: /inline/,
 						use: {
-							loader: "file-loader",
+							loader: 'file-loader',
 							options: {
-								name: isDev ? "[name].[ext]" : "[contenthash:8].[ext]",
-								outputPath: "assets/images/",
+								name: isDev ? '[name].[ext]' : '[contenthash:8].[ext]',
+								outputPath: 'assets/images/',
 							},
 						},
 					},
 					{
-						use: ["svg-sprite-loader", isProd && "svgo-loader"].filter(Boolean),
+						use: ['svg-sprite-loader', isProd && 'svgo-loader'].filter(Boolean),
 					},
 				],
 			},
@@ -82,10 +82,10 @@ const config = {
 			{
 				test: /\.(sa|sc)ss$/,
 				use: [
-					isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-					"css-loader",
-					"resolve-url-loader",
-					{ loader: "sass-loader", options: { sourceMap: true } },
+					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+					'css-loader',
+					'resolve-url-loader',
+					{ loader: 'sass-loader', options: { sourceMap: true } },
 				],
 			},
 
@@ -94,9 +94,9 @@ const config = {
 				test: /\.css$/,
 
 				use: [
-					isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 						options: {
 							importLoaders: 1,
 							modules: {
@@ -106,28 +106,30 @@ const config = {
 							sourceMap: true,
 						},
 					},
-					// {
-					// 	loader: 'postcss-loader',
-					// 	options: {
-					// 		plugins: [autoprefixer()],
-					// 	},
-					// },
+					{
+						loader: 'postcss-loader',
+						options: {
+							postcssOptions: {
+								plugins: ['autoprefixer'],
+							},
+						},
+					},
 				],
 			},
 			{
 				test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-				type: "asset/resource",
+				type: 'asset/resource',
 				generator: {
-					filename: "assets/fonts/[contenthash:8][ext]",
+					filename: 'assets/fonts/[contenthash:8][ext]',
 				},
 			},
 			{
 				test: /\.(jpeg|jpg|png|gif|mp4|webp)$/,
 				use: {
-					loader: "file-loader",
+					loader: 'file-loader',
 					options: {
-						name: isDev ? "[name].[ext]" : "[contenthash:8].[ext]",
-						outputPath: "assets/images/",
+						name: isDev ? '[name].[ext]' : '[contenthash:8].[ext]',
+						outputPath: 'assets/images/',
 					},
 				},
 			},
@@ -135,49 +137,54 @@ const config = {
 	},
 	plugins: [
 		new WebpackBar({
-			name: "Client",
-			color: "#4533C7",
+			name: 'Client',
+			color: '#4533C7',
 		}),
 		new LoadablePlugin({
-			filename: "../loadable-stats.json",
-			outputAsset: path.resolve("dist"),
+			filename: '../loadable-stats.json',
+			outputAsset: path.resolve('dist'),
 			writeToDisk: true,
 		}),
-		new DefinePlugin(createOptionsDefine("client")),
+		new DefinePlugin(createOptionsDefine('client')),
 	],
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				vendors: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					chunks: 'all',
+				},
+			},
+		},
+	},
 };
 
 if (isDev) {
 	config.devServer = {
-		allowedHosts: "all",
+		allowedHosts: 'all',
 
 		// Client
 		client: {
-			logging: "error",
-			overlay: {
-				errors: true,
-				warnings: false,
-				progress: true,
-			},
+			logging: 'error',
+			overlay: true,
+			progress: true,
 		},
 
 		compress: true,
-
-		hot: true,
+		hot: 'only',
 		host: process.env.DEV_SERVER_HOST,
 		port: process.env.DEV_SERVER_PORT,
 		watchOptions: { ignored: /node_modules/ },
 	};
-
-	config.plugins.push(new HotModuleReplacementPlugin());
 }
 
 if (isProd) {
 	config.plugins.push(
 		new MiniCssExtractPlugin({
-			filename: "assets/css/[name].[contenthash:8].css",
-			chunkFilename: "assets/css/[id].[contenthash:8].css",
-		})
+			filename: 'assets/css/[name].[contenthash:8].css',
+			chunkFilename: 'assets/css/[id].[contenthash:8].css',
+		}),
 	);
 
 	config.optimization = {

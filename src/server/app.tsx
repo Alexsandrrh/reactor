@@ -1,5 +1,5 @@
 import React from 'react';
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import path from 'path';
 import ReactDOMServer from 'react-dom/server';
 import HTML from './HTML';

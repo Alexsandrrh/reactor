@@ -34,6 +34,12 @@ const HTML: FC<Props> = ({
 				{helmet.style.toComponent()}
 				{helmet.script.toComponent()}
 				{helmet.noscript.toComponent()}
+				<meta charSet="UTF-8" />
+				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+				<meta
+					name="viewport"
+					content="width=device-width, maximum-scale=1, initial-scale=1"
+				/>
 				{extractor.getLinkElements()}
 				{extractor.getStyleElements()}
 			</head>
