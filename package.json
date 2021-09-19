@@ -8,6 +8,7 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
+		"pretty": "prettier --write .",
 		"start:build": "node ./dist/server.js",
 		"start": "cross-env NODE_ENV=development node ./bin/start.js",
 		"build": "cross-env NODE_ENV=production node ./bin/build.js"
@@ -54,6 +55,9 @@
 		"react-dev-utils": "^11.0.4",
 		"resolve-url-loader": "^4.0.0",
 		"style-loader": "^3.2.1",
+		"stylelint": "^13.13.1",
+		"stylelint-config-standard": "^22.0.0",
+		"stylelint-order": "^4.1.0",
 		"svg-sprite-loader": "^6.0.9",
 		"svgo-loader": "^3.0.0",
 		"terser-webpack-plugin": "^5.1.4",
