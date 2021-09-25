@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes/Routes';
 import createStore from './store';
 import { loadableReady } from '@loadable/component';
+import './assets/css/main.css';
 
 loadableReady(() => {
 	const rootContainer = document.getElementById('root');
@@ -16,11 +17,13 @@ loadableReady(() => {
 	const store = createStore(preloadedState);
 
 	ReactDOM.render(
-		<Provider store={store}>
-			<BrowserRouter>
-				<Routes />
-			</BrowserRouter>
-		</Provider>,
+		<React.StrictMode>
+			<Provider store={store}>
+				<BrowserRouter>
+					<Routes />
+				</BrowserRouter>
+			</Provider>
+		</React.StrictMode>,
 		rootContainer,
 	);
 });
