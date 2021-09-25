@@ -3,12 +3,7 @@
 		"browser": true,
 		"es2021": true,
 		"node": true,
-		"commonjs": true,
-		"webpack": true,
-		"IS_APP": true,
-		"IS_SERVER": true,
-		"IS_DEV": true,
-		"IS_PROD": true
+		"commonjs": true
 	},
 	"extends": [
 		"plugin:react/recommended",
@@ -22,12 +17,14 @@
 			"jsx": true
 		},
 		"ecmaVersion": 12,
-		"sourceType": "module"
+		"sourceType": "module",
+		"project": "./tsconfig.json"
 	},
 	"plugins": ["react", "@typescript-eslint", "prettier"],
 	"rules": {
 		"prettier/prettier": "error",
 		"react/prop-types": "off",
+		"react/jsx-props-no-spreading": "off",
 		"no-use-before-define": "off",
 		"@typescript-eslint/no-use-before-define": ["error"],
 		"no-unused-vars": "off",
