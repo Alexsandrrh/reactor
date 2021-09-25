@@ -13,7 +13,9 @@ const alias = {};
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 // CSS Modules name
-const localIdentName = isDev ? '[name]__[local]__[hash:base64:4]' : '[hash:base64:6]';
+const localIdentName = isDev
+	? '[name]__[local]__[hash:base64:4]'
+	: '[hash:base64:6]';
 
 // Options of define plugin
 function createOptionsDefine(target) {
@@ -41,7 +43,9 @@ function createOptionsDefine(target) {
 
 // Generator path
 const createPath = (dirname) =>
-	isDev ? `assets/${dirname}/[name].[ext]` : `assets/${dirname}/[contenthash:12].[ext]`;
+	isDev
+		? `assets/${dirname}/[name].[ext]`
+		: `assets/${dirname}/[contenthash:12].[ext]`;
 
 module.exports = {
 	env,
