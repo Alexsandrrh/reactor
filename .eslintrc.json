@@ -4,12 +4,18 @@
 		"es2021": true,
 		"node": true,
 		"commonjs": true,
+		"webpack": true,
 		"IS_APP": true,
 		"IS_SERVER": true,
 		"IS_DEV": true,
 		"IS_PROD": true
 	},
-	"extends": ["plugin:react/recommended", "standard", "prettier"],
+	"extends": [
+		"plugin:react/recommended",
+		"airbnb",
+		"airbnb-typescript",
+		"prettier"
+	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
