@@ -1,0 +1,13 @@
+@import 'reset.css';
+@import './vars/fonts.css';
+@import './vars/colors.css';
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

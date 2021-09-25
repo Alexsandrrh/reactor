@@ -12,14 +12,14 @@ const script = async () => {
 	process.env.NODE_ENV = 'production';
 
 	// Клиент
-	const clientConfig = getConfig('client');
-	const clientCompiler = webpack(clientConfig);
+	const appConfig = getConfig('app');
+	const appCompiler = webpack(appConfig);
 
 	// Сервер
 	const serverConfig = getConfig('server');
 	const serverCompiler = webpack(serverConfig);
 
-	clientCompiler.run(() => {
+	appCompiler.run(() => {
 		serverCompiler.run(() => {});
 	});
 };

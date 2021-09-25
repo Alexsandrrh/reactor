@@ -79,17 +79,6 @@ const config = {
 				],
 			},
 
-			// Sass
-			{
-				test: /\.(sa|sc)ss$/,
-				use: [
-					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-					'css-loader',
-					'resolve-url-loader',
-					{ loader: 'sass-loader', options: { sourceMap: true } },
-				],
-			},
-
 			// Css
 			{
 				test: /\.css$/,
@@ -107,14 +96,7 @@ const config = {
 							sourceMap: true,
 						},
 					},
-					{
-						loader: 'postcss-loader',
-						options: {
-							postcssOptions: {
-								plugins: ['autoprefixer'],
-							},
-						},
-					},
+					{ loader: 'postcss-loader' },
 				],
 			},
 			{

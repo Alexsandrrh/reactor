@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Response } from 'express';
 import path from 'path';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -16,7 +16,7 @@ app.use(express.static(PUBLIC_PATH));
 // Настройки защиты
 app.use(
 	helmet({
-		contentSecurityPolicy: false,
+		contentSecurityPolicy: IS_PROD,
 	}),
 );
 
@@ -24,7 +24,7 @@ app.use(
 app.use(compression({}));
 
 // Тестовый роут
-app.all('/test', (req, res, next) => {
+app.all('/test', (_: unknown, res: Response) => {
 	res.send('Testing route working!!!');
 });
 
