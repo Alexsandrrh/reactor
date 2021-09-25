@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { ChunkExtractor } from '@loadable/server';
 import { HelmetData } from 'react-helmet';
-import { Store } from '../client/store';
+import { Store } from '../app/store';
 
 interface Props {
 	helmet: HelmetData;

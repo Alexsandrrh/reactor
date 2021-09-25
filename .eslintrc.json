@@ -3,7 +3,11 @@
 		"browser": true,
 		"es2021": true,
 		"node": true,
-		"commonjs": true
+		"commonjs": true,
+		"IS_APP": true,
+		"IS_SERVER": true,
+		"IS_DEV": true,
+		"IS_PROD": true
 	},
 	"extends": ["plugin:react/recommended", "standard", "prettier"],
 	"parser": "@typescript-eslint/parser",

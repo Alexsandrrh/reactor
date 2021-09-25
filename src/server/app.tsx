@@ -6,8 +6,8 @@ import HTML from './HTML';
 import { ChunkExtractor } from '@loadable/server';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
-import Routes from '../client/routes/Routes';
-import createStore from '../client/store';
+import Routes from '../app/routes/Routes';
+import createStore from '../app/store';
 import { StaticRouter, StaticRouterContext } from 'react-router';
 
 // Создаем приложение

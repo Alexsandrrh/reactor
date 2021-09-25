@@ -22,9 +22,9 @@ const script = async () => {
 	process.env.DEV_SERVER_PORT = DEV_SERVER_PORT;
 	process.env.PUBLIC_PATH = `http://${process.env.DEV_SERVER_HOST}:${process.env.DEV_SERVER_PORT}/`;
 
-	// Клиент
-	const clientConfig = getConfig('client');
-	const clientCompiler = webpack(clientConfig);
+	// Приложение
+	const appConfig = getConfig('app');
+	const appCompiler = webpack(appConfig);
 
 	// Сервер
 	let watching = null;
@@ -32,7 +32,7 @@ const script = async () => {
 	const serverCompiler = webpack(serverConfig);
 
 	// Смотрим на завершение процесса с клиентом
-	clientCompiler.hooks.done.tap('app', () => {
+	appCompiler.hooks.done.tap('app', () => {
 		if (watching) {
 			return;
 		}
@@ -47,7 +47,7 @@ const script = async () => {
 		host: process.env.DEV_SERVER_HOST,
 		port: DEV_SERVER_PORT,
 	};
-	const devServer = new DevServer(devServerOptions, clientCompiler);
+	const devServer = new DevServer(devServerOptions, appCompiler);
 
 	await devServer.start();
 };

@@ -5,7 +5,7 @@ import reducers from './reducers';
 let compose = Redux.compose;
 
 // Для режима разработки на клиенте
-if (IS_DEV && IS_CLIENT) {
+if (IS_DEV && IS_APP) {
 	compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?? Redux.compose;
 }
 

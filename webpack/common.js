@@ -31,7 +31,7 @@ function createOptionsDefine(target) {
 		IS_DEV: isDev,
 		IS_PROD: isProd,
 		IS_SERVER: target === 'server',
-		IS_CLIENT: target === 'client',
+		IS_APP: target === 'app',
 	};
 
 	for (const item of Object.keys(output)) {

@@ -20,11 +20,11 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const config = {
 	mode: env,
-	name: 'client',
+	name: 'app',
 	stats: 'errors-only',
 	target: 'web',
 	devtool,
-	entry: { bundle: path.resolve('src', 'client') },
+	entry: { bundle: path.resolve('src', 'app') },
 	output: {
 		filename: isDev
 			? 'assets/js/[name].js'
@@ -137,7 +137,7 @@ const config = {
 	},
 	plugins: [
 		new WebpackBar({
-			name: 'Client',
+			name: 'App',
 			color: '#4533C7',
 		}),
 		new LoadablePlugin({
@@ -145,7 +145,7 @@ const config = {
 			outputAsset: path.resolve('dist'),
 			writeToDisk: true,
 		}),
-		new DefinePlugin(createOptionsDefine('client')),
+		new DefinePlugin(createOptionsDefine('app')),
 	],
 	optimization: {
 		splitChunks: {
