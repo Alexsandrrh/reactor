@@ -60,9 +60,11 @@
 		"eslint-plugin-react": "^7.26.0",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"file-loader": "^6.2.0",
+		"fork-ts-checker-webpack-plugin": "^6.3.3",
 		"husky": "^7.0.1",
 		"mini-css-extract-plugin": "^2.2.0",
 		"nodemon-webpack-plugin": "^4.5.2",
+		"postcss-loader": "^6.1.1",
 		"prettier": "^2.4.1",
 		"react-dev-utils": "^11.0.4",
 		"resolve-url-loader": "^4.0.0",
@@ -93,6 +95,7 @@
 		"react-router": "^5.2.1",
 		"react-router-dom": "^5.2.1",
 		"redux": "^4.1.1",
-		"redux-thunk": "^2.3.0"
+		"redux-thunk": "^2.3.0",
+		"reset.css": "^2.0.2"
 	}
 }
