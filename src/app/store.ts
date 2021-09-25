@@ -2,7 +2,7 @@ import * as Redux from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-let compose = Redux.compose;
+let { compose } = Redux;
 
 // Для режима разработки на клиенте
 if (IS_DEV && IS_APP) {

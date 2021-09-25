@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { loadableReady } from '@loadable/component';
 import Routes from './routes/Routes';
 import createStore from './store';
-import { loadableReady } from '@loadable/component';
 import './assets/css/main.css';
 
 loadableReady(() => {

@@ -1,15 +1,15 @@
 import React from 'react';
-import app from './app';
 import { Request, Response } from 'express';
 import path from 'path';
 import ReactDOMServer from 'react-dom/server';
-import HTML from './HTML';
 import { ChunkExtractor } from '@loadable/server';
+import { StaticRouter, StaticRouterContext } from 'react-router';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
+import app from './app';
+import HTML from './HTML';
 import Routes from '../app/routes/Routes';
 import createStore from '../app/store';
-import { StaticRouter, StaticRouterContext } from 'react-router';
 
 const statsFile: string = path.resolve('dist', 'loadable-stats.json');
 

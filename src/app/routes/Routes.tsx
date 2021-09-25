@@ -1,7 +1,3 @@
-import React from 'react';
-
-const Routes = () => {
-	return null;
-};
+const Routes = () => null;
 
 export default Routes;

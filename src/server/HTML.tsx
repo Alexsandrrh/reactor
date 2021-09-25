@@ -26,7 +26,7 @@ const HTML: FC<Props> = ({
 	const symbols = sprite.symbols.map((symbol: any) => symbol.content).join('');
 
 	return (
-		<html {...htmlAttr}>
+		<html lang="en" {...htmlAttr}>
 			<head>
 				{helmet.title.toComponent()}
 				{helmet.meta.toComponent()}
