@@ -17,6 +17,7 @@ const { DefinePlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const config = {
 	mode: env,
@@ -146,6 +147,7 @@ const config = {
 			writeToDisk: true,
 		}),
 		new DefinePlugin(createOptionsDefine('app')),
+		new ForkTsCheckerWebpackPlugin({}),
 	],
 	optimization: {
 		splitChunks: {

@@ -15,6 +15,7 @@ const WebpackBar = require('webpackbar');
 const nodeExternals = require('webpack-node-externals');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const config = {
 	mode: env,
@@ -32,9 +33,8 @@ const config = {
 		library: 'commonjs2',
 		publicPath: isDev ? process.env.PUBLIC_PATH : '',
 	},
-	externals: nodeExternals({
-		allowlist: [/\.(?!(?:jsx?|json)$).{1,5}$/i],
-	}),
+	externalsPresets: { node: true },
+	externals: [nodeExternals()],
 	resolve: {
 		alias,
 		extensions,
@@ -127,6 +127,7 @@ const config = {
 				},
 			],
 		}),
+		new ForkTsCheckerWebpackPlugin({}),
 	],
 };
 
