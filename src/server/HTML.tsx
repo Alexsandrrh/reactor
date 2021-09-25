@@ -49,16 +49,16 @@ const HTML: FC<Props> = ({
 					xmlns="https://www.w3.org/2000/svg"
 					xmlnsXlink="https://www.w3.org/1999/xlink"
 					style={{
+						display: 'none',
 						position: 'absolute',
 						width: '0',
 						height: '0',
-						display: 'none',
 					}}
 					dangerouslySetInnerHTML={{
 						__html: symbols,
 					}}
 				/>
-				<div id="root" dangerouslySetInnerHTML={{ __html: markup }} />
+				<div id="app" dangerouslySetInnerHTML={{ __html: markup }} />
 				<div id="popups" />
 				<script
 					id="__PRELOADED_STATE__"

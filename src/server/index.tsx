@@ -1,5 +1,6 @@
 import React from 'react';
-import express, { Request, Response } from 'express';
+import app from './app';
+import { Request, Response } from 'express';
 import path from 'path';
 import ReactDOMServer from 'react-dom/server';
 import HTML from './HTML';
@@ -10,13 +11,7 @@ import Routes from '../app/routes/Routes';
 import createStore from '../app/store';
 import { StaticRouter, StaticRouterContext } from 'react-router';
 
-// Создаем приложение
-const app = express();
-
 const statsFile: string = path.resolve('dist', 'loadable-stats.json');
-
-// Указываем путь до публичной папки
-app.use(express.static(path.resolve('dist', 'public')));
 
 app.get('/*', async (req: Request, res: Response) => {
 	// Создаем состояние на сервере
@@ -64,5 +59,3 @@ app.get('/*', async (req: Request, res: Response) => {
 		stream.pipe(res, { end: true });
 	});
 });
-
-export default app;

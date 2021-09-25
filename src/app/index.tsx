@@ -8,7 +8,7 @@ import { loadableReady } from '@loadable/component';
 import './assets/css/main.css';
 
 loadableReady(() => {
-	const rootContainer = document.getElementById('root');
+	const rootContainer = document.getElementById('app');
 	const preloadedStateContainer = document.getElementById(
 		'__PRELOADED_STATE__',
 	);
