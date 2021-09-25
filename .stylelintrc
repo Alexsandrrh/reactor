@@ -1,6 +1,0 @@
-{
-	"plugins": [
-		"stylelint-order"
-	],
-	"extends": "stylelint-config-standard"
-}
