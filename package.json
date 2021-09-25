@@ -64,14 +64,19 @@
 		"husky": "^7.0.1",
 		"mini-css-extract-plugin": "^2.2.0",
 		"nodemon-webpack-plugin": "^4.5.2",
+		"postcss": "^8.3.8",
 		"postcss-loader": "^6.1.1",
+		"postcss-mixins": "^8.1.0",
+		"postcss-preset-env": "^6.7.0",
 		"prettier": "^2.4.1",
 		"react-dev-utils": "^11.0.4",
 		"resolve-url-loader": "^4.0.0",
 		"style-loader": "^3.2.1",
 		"stylelint": "^13.13.1",
+		"stylelint-config-prettier": "^8.0.2",
 		"stylelint-config-standard": "^22.0.0",
 		"stylelint-order": "^4.1.0",
+		"stylelint-prettier": "^1.2.0",
 		"svg-sprite-loader": "^6.0.9",
 		"svgo-loader": "^3.0.0",
 		"terser-webpack-plugin": "^5.1.4",
@@ -97,5 +102,19 @@
 		"redux": "^4.1.1",
 		"redux-thunk": "^2.3.0",
 		"reset.css": "^2.0.2"
+	},
+	"browserslist": {
+		"production": [
+			"last 10 years",
+			"last 5 versions",
+			"ie >= 11",
+			"Android >= 5",
+			"iOS >= 4"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	}
 }
