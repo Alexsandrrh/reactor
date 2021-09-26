@@ -16,6 +16,7 @@ const nodeExternals = require('webpack-node-externals');
 const NodemonPlugin = require('nodemon-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { RunScriptWebpackPlugin } = require('run-script-webpack-plugin');
 
 const config = {
 	mode: env,
@@ -132,7 +133,7 @@ const config = {
 };
 
 if (isDev) {
-	config.plugins.push(new NodemonPlugin({ nodeArgs: ['--inspect'] }));
+	config.plugins.push(new RunScriptWebpackPlugin({ nodeArgs: ['--inspect'] }));
 }
 
 module.exports = config;
