@@ -1,14 +1,12 @@
 import React, { FC, ReactElement } from 'react';
 import { ChunkExtractor } from '@loadable/server';
 import { HelmetData } from 'react-helmet';
-import { Store } from '../app/store';
 
 interface Props {
 	helmet: HelmetData;
 	sprite: any;
 	extractor: ChunkExtractor;
 	markup: string;
-	preloadedState: Store;
 }
 
 const HTML: FC<Props> = ({
@@ -16,7 +14,6 @@ const HTML: FC<Props> = ({
 	sprite,
 	extractor,
 	markup,
-	preloadedState,
 }): ReactElement => {
 	// React Helmet
 	const htmlAttr = helmet.htmlAttributes.toComponent();
@@ -59,14 +56,6 @@ const HTML: FC<Props> = ({
 					}}
 				/>
 				<div id="app" dangerouslySetInnerHTML={{ __html: markup }} />
-				<div id="popups" />
-				<script
-					id="__PRELOADED_STATE__"
-					type="application/json"
-					dangerouslySetInnerHTML={{
-						__html: JSON.stringify(preloadedState).replace(/</g, '\\u003c'),
-					}}
-				/>
 				{extractor.getScriptElements()}
 			</body>
 		</html>
